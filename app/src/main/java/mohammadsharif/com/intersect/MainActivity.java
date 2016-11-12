@@ -35,12 +35,33 @@ import com.google.firebase.auth.FirebaseUser;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.BottomBarFragment;
+import com.roughike.bottombar.OnTabSelectedListener;
+
 public class MainActivity extends AppCompatActivity {
 
     private CallbackManager callbackManager;
     private LoginButton loginButton;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private static final int RC_SIGN_IN = 0;
+    private BottomBar bottomBar;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == RC_SIGN_IN){
+            if(resultCode == RESULT_OK){
+                // User Logged In
+                System.out.println("User Logged In");
+            } else {
+                // User not authenticated
+                System.out.println("User must be authenticated first");
+
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +84,47 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setProviders(
-                AuthUI.FACEBOOK_PROVIDER
-        ).build(), 1);
+        addFragments(savedInstanceState);
+
+
+        if(mAuth.getCurrentUser() != null){
+            // User Already Signed In
+            System.out.println("User Logged In");
+
+        } else {
+            startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setProviders(
+                    AuthUI.FACEBOOK_PROVIDER
+            ).build(), RC_SIGN_IN);
+
+            System.out.println("User must be authenticated");
+
+        }
+
+
+    }
+
+    public void addFragments(Bundle savedInstanceState) {
+        bottomBar = BottomBar.attach(this, savedInstanceState);
+        bottomBar.setFragmentItems(getSupportFragmentManager(), R.id.fragmentContainer,
+                new BottomBarFragment(FirstFragment.newInstance(), R.drawable.ic_login_white_24dp, "User"),
+                new BottomBarFragment(SecondFragment.newInstance(), R.drawable.ic_qrreader_on_white_24dp, "Profile Scanner"),
+                new BottomBarFragment(ThirdFragment.newInstance(), R.drawable.ic_contact_list, "Contact List"));
+        bottomBar.mapColorForTab(0, "#3B494C");
+        bottomBar.mapColorForTab(1, "#00796B");
+        bottomBar.mapColorForTab(2, "#7B1FA2");
+
+        bottomBar.setOnItemSelectedListener(new OnTabSelectedListener() {
+            @Override
+            public void onItemSelected(int position) {
+                switch (position) {
+                    case 0:
+                        // Item 1 Selected
+                }
+            }
+        });
+
+        bottomBar.setActiveTabColor("#C2185B");
+
     }
 
 }

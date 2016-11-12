@@ -40,7 +40,7 @@ public class FirstFragment extends Fragment {
 
 
 
-
+        // Button array
         ImageButton[] buttons = new ImageButton[]{
                 facebook,
                 instagram,

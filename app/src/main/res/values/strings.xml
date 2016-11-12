@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Intersect</string>
+    <string name="facebook_app_id">157006058103109</string>
+    <string name="fb_login_protocol_scheme">fb157006058103109</string>
+</resources>

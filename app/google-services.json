@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "724680148066",
+    "firebase_url": "https://intersect-45715.firebaseio.com",
+    "project_id": "intersect-45715",
+    "storage_bucket": "intersect-45715.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724680148066:android:602f75604ee5fe5e",
+        "android_client_info": {
+          "package_name": "mohammadsharif.com.intersect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "724680148066-ftf7v2cgg3llgit22tii4v9dnfrnsaml.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAig8HfM_2JazvI-9pNrbOvD_B4DPoktEc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

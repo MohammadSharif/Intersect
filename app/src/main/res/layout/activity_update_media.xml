@@ -11,8 +11,8 @@
     tools:context="mohammadsharif.com.intersect.UpdateMediaActivity">
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="25dp"
@@ -20,12 +20,11 @@
         android:src = "@drawable/facebooklogo"/>
     
     <TextView
-        android:layout_width="120dp"
+        android:layout_width="200dp"
         android:layout_height="40dp"
         android:id ="@+id/text1"
         android:gravity="center"
-        android:centerVertical = "true"
-        android:layout_marginLeft="39dp"
+        android:layout_marginLeft="42dp"
         android:text = "Username"
         android:layout_toRightOf="@+id/facebook_button"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -36,21 +35,20 @@
 
 
     <ImageView
-        android:layout_width="43dp"
-        android:layout_height="43dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/facebook_button"
         android:layout_marginTop="15dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="25dp"
         android:id = "@+id/twitter_button"
         android:src = "@drawable/twitterlogo"/>
 
     <TextView
-        android:layout_width="120dp"
+        android:layout_width="200dp"
         android:layout_height="40dp"
         android:id ="@+id/text2"
         android:gravity="center"
-        android:centerVertical = "true"
         android:layout_marginLeft="42dp"
         android:text = "Username"
         android:layout_below = "@+id/text1"
@@ -61,4 +59,53 @@
         android:background="@drawable/rectangle"
         android:layout_marginTop="20dp"/>
 
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/twitter_button"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="25dp"
+        android:id = "@+id/linkedin_button"
+        android:src = "@drawable/linkedinlogo"/>
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:id ="@+id/text3"
+        android:gravity="center"
+        android:layout_marginLeft="42dp"
+        android:text = "Username"
+        android:layout_below = "@+id/text2"
+        android:layout_toRightOf="@+id/linkedin_button"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textIsSelectable="true"
+        android:textStyle="italic"
+        android:background="@drawable/rectangle"
+        android:layout_marginTop="22dp"/>
+
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/linkedin_button"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="25dp"
+        android:id = "@+id/instagram_button"
+        android:src = "@drawable/instagramlogo"/>
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:id ="@+id/text4"
+        android:gravity="center"
+        android:layout_marginLeft="42dp"
+        android:text = "Username"
+        android:layout_below = "@+id/text3"
+        android:layout_toRightOf="@+id/instagram_button"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textIsSelectable="true"
+        android:textStyle="italic"
+        android:background="@drawable/rectangle"
+        android:layout_marginTop="24dp"/>
 </RelativeLayout>

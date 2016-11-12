@@ -1,7 +1,5 @@
 package mohammadsharif.com.intersect;
 
-import android.location.Location;
-
 import java.net.URL;
 
 public class User {
@@ -11,15 +9,13 @@ public class User {
     private URL twitterURL;
     private URL linkedInURL;
     private URL instagramURL;
-    private Location meetLocation;
 
-    public User(String name, URL facebookURL, URL twitterURL, URL linkedInURL, URL instagramURL, Location meetLocation){
+    public User(String name, URL facebookURL, URL twitterURL, URL linkedInURL, URL instagramURL){
         this.name = name;
         this.facebookURL = facebookURL;
         this.instagramURL = instagramURL;
         this.twitterURL = twitterURL;
         this.linkedInURL = linkedInURL;
-        this.meetLocation = meetLocation;
     }
 
     public String getName() {
@@ -62,11 +58,5 @@ public class User {
         this.instagramURL = instagramURL;
     }
 
-    public Location getMeetLocation() {
-        return meetLocation;
-    }
 
-    public void setMeetLocation(Location meetLocation) {
-        this.meetLocation = meetLocation;
-    }
 }

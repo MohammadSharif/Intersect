@@ -264,9 +264,7 @@ public class MainActivity extends AppCompatActivity implements
                 new BottomBarFragment(FirstFragment.newInstance(), R.drawable.ic_login_white_24dp, "User"),
                 new BottomBarFragment(SecondFragment.newInstance(), R.drawable.ic_qrreader_on_white_24dp, "Profile Scanner"),
                 new BottomBarFragment(ThirdFragment.newInstance(), R.drawable.ic_contact_list, "Contact List"));
-        bottomBar.mapColorForTab(0, "#3B494C");
-        bottomBar.mapColorForTab(1, "#00796B");
-        bottomBar.mapColorForTab(2, "#7B1FA2");
+        bottomBar.useDarkTheme(true);
 
         bottomBar.setOnItemSelectedListener(new OnTabSelectedListener() {
             @Override
@@ -278,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
 
-        bottomBar.setActiveTabColor("#C2185B");
+        bottomBar.setActiveTabColor("#1872c2");
 
     }
 

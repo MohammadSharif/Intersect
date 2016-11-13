@@ -7,17 +7,6 @@
                 android:layout_height="match_parent">
 
 
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/com_facebook_profile_picture_blank_portrait"
-        android:layout_marginBottom="26dp"
-        android:id="@+id/imageView"
-        android:layout_above="@+id/username"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"/>
-
     <ImageButton
         android:src="@drawable/ic_logoff"
         android:layout_width="wrap_content"
@@ -69,6 +58,15 @@
         android:textColor="@color/white"
         android:layout_marginBottom="22dp"
         android:layout_above="@+id/tvFragFirst"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/com_facebook_profile_picture_blank_portrait"
+        android:layout_marginBottom="26dp"
+        android:id="@+id/imageView"
+        android:layout_above="@+id/username"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

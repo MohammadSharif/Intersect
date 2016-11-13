@@ -43,6 +43,7 @@ public class ThirdFragment extends Fragment {
     public static ThirdFragment newInstance() {
         ThirdFragment f = new ThirdFragment();
         return f;
+
     }
 
 }

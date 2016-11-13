@@ -2,13 +2,16 @@ package mohammadsharif.com.intersect;
 
 import android.location.Location;
 
+import java.sql.Time;
+
 public class Friend extends User {
 
     private Location meetLocation;
-
-    public Friend(User toBefriend, Location meetLocation){
+        private String time;
+    public Friend(User toBefriend, Location meetLocation, String time){
         super(toBefriend.getName(), toBefriend.getFacebookURL(), toBefriend.getTwitterURL(), toBefriend.getLinkedInURL(), toBefriend.getInstagramURL());
         this.meetLocation = meetLocation;
+        this.time = time;
     }
 
     public Location getMeetLocation() {
@@ -18,4 +21,11 @@ public class Friend extends User {
     public void setMeetLocation(Location meetLocation) {
         this.meetLocation = meetLocation;
     }
+
+    public String getTimeMet(){return time;}
+
+    public void setTime(String t){this.time = t;}
+
 }
+
+

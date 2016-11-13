@@ -5,8 +5,11 @@
     package="mohammadsharif.com.intersect">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -35,7 +38,7 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             tools:replace="android:theme" />
-        <activity android:name=".UpdateMediaActivity"></activity>
+        <activity android:name=".UpdateMediaActivity" />
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="e4729e45cbd71441cb90fd59411370ae684c47a2" />

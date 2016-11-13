@@ -1,9 +1,11 @@
 package mohammadsharif.com.intersect;
 
-import android.app.Fragment;
+
+
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
@@ -26,6 +28,13 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
     private Camera camera;                  // camera that scans
     private RTFeatureSearcher searcher;     // searchers for artifacts in frame
     private SearchResult result;            // holds result of searcher
+    private CameraFragmentCallbacks callback;
+
+    public static CameraFragment newInstance(CameraFragmentCallbacks callback) {
+        CameraFragment fragment = new CameraFragment();
+        fragment.callback = callback;
+        return fragment;
+    }
 
     @Nullable
     @Override
@@ -140,8 +149,11 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
             // Toast!
             if (result != null) {
                 List<String> appendInfo = result.getAppendInfo();
-                Toast.makeText(getActivity().getApplicationContext(), appendInfo.get(2),
+                Toast.makeText(getActivity().getApplicationContext(), appendInfo.get(3),
                         Toast.LENGTH_SHORT).show();
+                String id = appendInfo.get(2);
+                String name = appendInfo.get(3);
+                if (callback != null) callback.postRecognition(id, name);
             } else {
                 Toast.makeText(getActivity().getApplicationContext(), "Not found",
                         Toast.LENGTH_SHORT).show();

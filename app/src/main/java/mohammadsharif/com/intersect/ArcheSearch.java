@@ -24,7 +24,20 @@ public class ArcheSearch extends AsyncTask<Void, Void, List<SearchResult>> {
     protected List<SearchResult> doInBackground(Void... params) {
         //List<SearchResult> searchResults = feSearcher.ExecuteFeatureSearch(frame, RTFeatureSearcher.SERVER_STAGING_SEARCH);
         List<SearchResult> searchResults = feSearcher.ExecuteFeatureSearch(frame, RTFeatureSearcher.SERVER_SERVICE_SEARCH);
-        Log.d("ARCHE_SEARCH", searchResults.get(0).getAppendInfo().get(2)); // DEBUG
+        if (searchResults != null) {
+            int hitCount = searchResults.size();
+            //select best match
+            double maxScore = 0.;
+            SearchResult bestResult = null;
+            for (SearchResult result: searchResults) {
+                double score = result.getScore();
+                if (score > maxScore) {
+                    maxScore = score;
+                    bestResult = result;
+                }
+            }
+            callback.postExecute(bestResult);
+        }
         return searchResults;
     }
 
@@ -45,7 +58,7 @@ public class ArcheSearch extends AsyncTask<Void, Void, List<SearchResult>> {
                     bestResult = result;
                 }
             }
-            callback.postExecute(bestResult);
+//            callback.postExecute(bestResult); // FIXME workaround for API bug
         }
     }
 }

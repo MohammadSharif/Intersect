@@ -102,10 +102,36 @@
         android:layout_marginLeft="42dp"
         android:text = "Username"
         android:layout_below = "@+id/text3"
-        android:layout_toRightOf="@+id/instagram_button"
+        android:layout_toEndOf="@+id/instagram_button"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textIsSelectable="true"
         android:textStyle="italic"
         android:background="@drawable/rectangle"
         android:layout_marginTop="24dp"/>
+
+
+    <Button
+        android:id ="@+id/push_button"
+        android:layout_width="100dp"
+        android:layout_height="110dp"
+        android:text="∩"
+        android:textSize="75dp"
+        android:gravity= "top|center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_bg_round"
+        android:padding="15dp"
+        android:layout_marginBottom="30dp"
+        />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:text="Submit"
+        android:textSize="30dp"
+        android:layout_above="@+id/push_button"
+        android:textStyle="bold"
+        />
+
 </RelativeLayout>

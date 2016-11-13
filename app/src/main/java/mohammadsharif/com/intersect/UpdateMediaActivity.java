@@ -26,13 +26,6 @@ public class UpdateMediaActivity extends AppCompatActivity implements View.OnCli
             Intent intent = new Intent(UpdateMediaActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
-        } else if(v.getId() == R.id.log_out_button){
-            AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    finish();
-                }
-            });
         }
     }
 }

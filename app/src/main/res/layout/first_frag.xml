@@ -50,10 +50,21 @@
     </LinearLayout>
 
     <ImageButton
-        android:src="@drawable/ic_action_settings"
+        android:src="@drawable/ic_logoff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
+        android:onClick="onClick"
+        android:id="@+id/logoff"
+        />
+
+    <ImageButton
+        android:src="@drawable/ic_action_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:background="@android:color/transparent"
         android:onClick="onClick"

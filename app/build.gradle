@@ -38,7 +38,7 @@ dependencies {
 //    compile 'com.google.firebase:firebase-auth:9.8.0'
 //    compile 'com.google.firebase:firebase-database:9.8.0'
     compile 'com.firebaseui:firebase-ui:0.4.4'
-//    compile 'com.google.android.gms:play-services-auth:9.8.0'
+    compile 'com.google.android.gms:play-services-auth:9.8.0'
     compile 'com.roughike:bottom-bar:1.2.1'
 
     testCompile 'junit:junit:4.12'

@@ -268,13 +268,16 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.log_out_button){
+        if(v.getId() == R.id.logoff){
             AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     finish();
                 }
             });
+        } else if(v.getId() == R.id.settings){
+            Intent intent = new Intent(MainActivity.this, UpdateMediaActivity.class);
+            startActivity(intent);
         }
     }
 

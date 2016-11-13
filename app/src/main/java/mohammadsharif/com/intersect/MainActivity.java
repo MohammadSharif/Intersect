@@ -1,10 +1,14 @@
 package mohammadsharif.com.intersect;
 
+import android.*;
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.location.Location;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -12,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -23,6 +28,7 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -42,7 +48,24 @@ import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.BottomBarFragment;
 import com.roughike.bottombar.OnTabSelectedListener;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+//Imports for Geolocation
+import android.location.Location;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
+import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
+import com.google.android.gms.location.LocationServices;
+
+public class MainActivity extends AppCompatActivity implements
+        View.OnClickListener, ConnectionCallbacks, OnConnectionFailedListener,
+        ActivityCompat.OnRequestPermissionsResultCallback {
 
     private CallbackManager callbackManager;
     private LoginButton loginButton;
@@ -51,7 +74,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final int RC_SIGN_IN = 0;
     private BottomBar bottomBar;
 
+    //Location instance variables
+    private GoogleApiClient mGoogleApiClient;
+    protected Location mLastLocation;
+
+    protected String mLatitudeLabel;
+    protected String mLongitudeLabel;
+    protected TextView mLatitudeText;
+    protected TextView mLongitudeText;
+
+    protected static final String TAG = "MainActivity";
+    //End of Location instance variables
+
     private DatabaseReference mDatabase;
+
+
+    @Override
+    public void onConnectionFailed(ConnectionResult result) {
+        // Refer to the javadoc for ConnectionResult to see what error codes might be returned in
+        // onConnectionFailed.
+        Log.i(TAG, "Connection failed: ConnectionResult.getErrorCode() = " + result.getErrorCode());
+    }
+
+
+    @Override
+    public void onConnectionSuspended(int cause) {
+        // The connection to Google Play services was lost for some reason. We call connect() to
+        // attempt to re-establish the connection.
+        Log.i(TAG, "Connection suspended");
+        mGoogleApiClient.connect();
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -117,7 +169,75 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
+        // Create an instance of GoogleAPIClient.
+        if (mGoogleApiClient == null) {
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(LocationServices.API)
+                    .build();
+        }
 
+
+    }
+
+    @Override
+    public void onConnected(Bundle connectionHint) {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1203);
+            return;
+        }
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+        if (mLastLocation != null && mLatitudeText!=null && mLongitudeLabel!=null) {
+            //mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
+            //System.out.println(String.valueOf(mLastLocation.getLatitude()));
+            //mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
+            //System.out.println(String.valueOf(mLastLocation.getLongitude()));
+        }
+    }
+
+    //mLastLocation.getLastLocation();
+
+    protected void onStart() {
+        mGoogleApiClient.connect();
+        super.onStart();
+    }
+
+    protected void onStop() {
+        mGoogleApiClient.disconnect();
+        super.onStop();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1203);
+            return;
+        }
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+        if (mLastLocation != null && mLatitudeText!=null && mLongitudeLabel!=null) {
+            //mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
+            //System.out.println(String.valueOf(mLastLocation.getLatitude()));
+            //mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
+            //System.out.println(String.valueOf(mLastLocation.getLongitude()));
+        }
     }
 
     public void addFragments(Bundle savedInstanceState) {

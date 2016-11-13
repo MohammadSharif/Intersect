@@ -9,7 +9,7 @@ public class Friend extends User {
     private Location meetLocation;
         private String time;
     public Friend(User toBefriend, Location meetLocation, String time){
-        super(toBefriend.getName(), toBefriend.getFacebookURL(), toBefriend.getTwitterURL(), toBefriend.getLinkedInURL(), toBefriend.getInstagramURL());
+        super(toBefriend.getUserID(), toBefriend.getName(), toBefriend.getFriends());
         this.meetLocation = meetLocation;
         this.time = time;
     }

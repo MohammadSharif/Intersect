@@ -8,10 +8,10 @@
 
 
     <Button
-        android:id="@+id/Blogin"
+        android:id="@+id/log_out_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onButtonClick"
+        android:onClick="onClick"
         android:text="Log Out"
         android:layout_marginBottom="33dp"
         android:layout_marginLeft="50dp"

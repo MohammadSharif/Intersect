@@ -39,7 +39,7 @@ import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.BottomBarFragment;
 import com.roughike.bottombar.OnTabSelectedListener;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private CallbackManager callbackManager;
     private LoginButton loginButton;
@@ -55,9 +55,13 @@ public class MainActivity extends AppCompatActivity {
             if(resultCode == RESULT_OK){
                 // User Logged In
                 System.out.println("User Logged In");
+                Intent intent = new Intent(MainActivity.this, UpdateMediaActivity.class);
+                finish();
+                startActivity(intent);
             } else {
                 // User not authenticated
                 System.out.println("User must be authenticated first");
+
 
             }
         }
@@ -96,6 +100,11 @@ public class MainActivity extends AppCompatActivity {
                     AuthUI.FACEBOOK_PROVIDER
             ).build(), RC_SIGN_IN);
 
+//            Intent intent = new Intent(MainActivity.this, UpdateMediaActivity.class);
+//
+//
+//            startActivity(intent);
+
             System.out.println("User must be authenticated");
 
         }
@@ -127,4 +136,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.log_out_button){
+            AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    finish();
+                }
+            });
+        }
+    }
 }

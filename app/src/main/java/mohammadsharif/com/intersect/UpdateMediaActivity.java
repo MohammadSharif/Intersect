@@ -26,6 +26,10 @@ public class UpdateMediaActivity extends AppCompatActivity implements View.OnCli
             Intent intent = new Intent(UpdateMediaActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
+        } else if(v.getId() == R.id.facebook_button){
+            Intent intent = new Intent(UpdateMediaActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 }

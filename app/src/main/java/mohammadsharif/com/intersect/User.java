@@ -1,26 +1,31 @@
 package mohammadsharif.com.intersect;
 
+import android.location.Location;
+
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class User {
+
+public class User implements Serializable{
 
     private String name;
     private ArrayList<Friend> friends;
     private String userID;
-//    private URL facebookURL;
-//    private URL twitterURL;
-//    private URL linkedInURL;
-//    private URL instagramURL;
+    private boolean facebookConnected;
+    private boolean twitterConnected;
+    private boolean linkedInConnected;
+    private boolean instagramConnected;
 
-    public User(String userID, String name, ArrayList<Friend> friends){
+    public User(String userID, String name, ArrayList<Friend> friends) {
         this.name = name;
         this.friends = friends;
         this.userID = userID;
-//        this.facebookURL = facebookURL;
-//        this.instagramURL = instagramURL;
-//        this.twitterURL = twitterURL;
-//        this.linkedInURL = linkedInURL;
+
+        this.facebookConnected = false;
+        this.instagramConnected = false;
+        this.twitterConnected = false;
+        this.linkedInConnected = false;
     }
 
     public String getName() {
@@ -31,46 +36,51 @@ public class User {
         this.name = name;
     }
 
-    public String getUserID(){
+    public String getUserID() {
         return userID;
     }
 
-    public ArrayList<Friend> getFriends(){
+    public ArrayList<Friend> getFriends() {
         return friends;
     }
 
 
-//    public URL getFacebookURL() {
-//        return facebookURL;
-//    }
-//
-//    public void setFacebookURL(URL facebookURL) {
-//        this.facebookURL = facebookURL;
-//    }
-//
-//    public URL getTwitterURL() {
-//        return twitterURL;
-//    }
-//
-//    public void setTwitterURL(URL twitterURL) {
-//        this.twitterURL = twitterURL;
-//    }
-//
-//    public URL getLinkedInURL() {
-//        return linkedInURL;
-//    }
-//
-//    public void setLinkedInURL(URL linkedInURL) {
-//        this.linkedInURL = linkedInURL;
-//    }
-//
-//    public URL getInstagramURL() {
-//        return instagramURL;
-//    }
-//
-//    public void setInstagramURL(URL instagramURL) {
-//        this.instagramURL = instagramURL;
-//    }
+    public boolean isFacebookConnected() {
+        return facebookConnected;
+    }
+
+    public void setFacebookConnected(boolean facebookConnected) {
+        this.facebookConnected = facebookConnected;
+    }
+
+    public boolean isTwitterConnected() {
+        return twitterConnected;
+    }
+
+    public void setTwitterConnected(boolean twitterConnected) {
+        this.twitterConnected = twitterConnected;
+    }
+
+    public boolean isLinkedInConnected() {
+        return linkedInConnected;
+    }
+
+    public void setLinkedInConnected(boolean linkedInConnected) {
+        this.linkedInConnected = linkedInConnected;
+    }
+
+    public boolean isInstagramConnected() {
+        return instagramConnected;
+    }
+
+    public void setInstagramConnected(boolean instagramConnected) {
+        this.instagramConnected = instagramConnected;
+    }
+
+    public void addFriend(User friend, Location location, String time) {
+        Friend toAdd = new Friend(friend, location, time);
+        friends.add(toAdd);
+    }
 
 
 }

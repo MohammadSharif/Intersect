@@ -298,6 +298,10 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
+    public void addFriend(Friend friend){
+        user.addFriend(friend);
+    }
+
     private void writeUser(User user){
         mDatabase.child("users").child(user.getUserID()).setValue(user);
     }

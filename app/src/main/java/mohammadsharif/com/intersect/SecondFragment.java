@@ -1,6 +1,7 @@
 package mohammadsharif.com.intersect;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -38,5 +39,10 @@ public class SecondFragment extends Fragment implements CameraFragmentCallbacks 
     @Override
     public void postRecognition(String firebaseID, String formalName) {
         Log.d(TAG, firebaseID + " | " + formalName);
+        Friend scanned = new Friend(firebaseID, formalName);
+        MainActivity main = (MainActivity)getActivity();
+        Intent intent = new Intent(main, FollowSomeoneActivity.class);
+        main.addFriend(scanned);
+        getActivity().startActivity(intent);
     }
 }

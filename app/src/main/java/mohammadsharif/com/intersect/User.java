@@ -77,8 +77,8 @@ public class User implements Serializable{
         this.instagramConnected = instagramConnected;
     }
 
-    public void addFriend(User friend, Location location, String time) {
-        Friend toAdd = new Friend(friend, location, time);
+    public void addFriend(User friend) {
+        Friend toAdd = new Friend(friend.userID, friend.getName());
         friends.add(toAdd);
     }
 

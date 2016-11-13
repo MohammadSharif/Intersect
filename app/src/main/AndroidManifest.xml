@@ -39,6 +39,9 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             tools:replace="android:theme" />
         <activity android:name=".UpdateMediaActivity" />
+
+        <activity android:name="mohammadsharif.com.intersect.FollowSomeoneActivity"/>
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="e4729e45cbd71441cb90fd59411370ae684c47a2" />

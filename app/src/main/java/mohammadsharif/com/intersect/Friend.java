@@ -8,29 +8,18 @@ public class Friend extends User {
 
     ThirdFragment ref_3;
     private Location meetLocation;
-        private String time;
+    private String time;
 
 
-    public Friend(User toBefriend, Location meetLocation, String time){
-        super(toBefriend.getUserID(), toBefriend.getName(), toBefriend.getFriends());
-        this.meetLocation = meetLocation;
-        this.time = time;
+    public Friend(String userID, String name){
+        super(userID, name, null);
+
         //Adding to visible friend list
-        ref_3.addFriend(toBefriend);
+//        ref_3.addFriend(toBefriend);
     }
 
-    public Location getMeetLocation() {
-        return meetLocation;
-    }
 
-    public void setMeetLocation(Location meetLocation) {
-        this.meetLocation = meetLocation;
-    }
-
-    public String getTimeMet(){return time;}
 
     public void setTime(String t){this.time = t;}
 
 }
-
-

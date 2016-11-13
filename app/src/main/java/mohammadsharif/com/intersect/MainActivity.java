@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements
     //End of Location instance variables
 
     private DatabaseReference mDatabase;
+    private User user;
 
 
     @Override
@@ -121,9 +122,12 @@ public class MainActivity extends AppCompatActivity implements
                 // User Logged In
                 System.out.println("User Logged In");
                 Intent intent = new Intent(MainActivity.this, UpdateMediaActivity.class);
+                intent.putExtra("user", user);
                 finish();
                 startActivity(intent);
-                writeUser(new User(mAuth.getCurrentUser().getUid(), mAuth.getCurrentUser().getDisplayName(), new ArrayList<Friend>()));
+                user = new User(mAuth.getCurrentUser().getUid(), mAuth.getCurrentUser().getDisplayName(), new ArrayList<Friend>());
+                writeUser(user);
+
             } else {
                 // User not authenticated
                 System.out.println("User must be authenticated first");
@@ -164,6 +168,8 @@ public class MainActivity extends AppCompatActivity implements
         if(mAuth.getCurrentUser() != null){
             // User Already Signed In
             System.out.println("User Logged In");
+            user = new User(mAuth.getCurrentUser().getUid(), mAuth.getCurrentUser().getDisplayName(), new ArrayList<Friend>());
+            writeUser(user);
 
         } else {
             startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setProviders(
@@ -288,6 +294,7 @@ public class MainActivity extends AppCompatActivity implements
         } else if(v.getId() == R.id.settings){
             Intent intent = new Intent(MainActivity.this, UpdateMediaActivity.class);
             startActivity(intent);
+
         }
     }
 

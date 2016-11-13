@@ -38,6 +38,9 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import io.fabric.sdk.android.Fabric;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -66,6 +69,11 @@ import com.google.android.gms.location.LocationServices;
 public class MainActivity extends AppCompatActivity implements
         View.OnClickListener, ConnectionCallbacks, OnConnectionFailedListener,
         ActivityCompat.OnRequestPermissionsResultCallback {
+
+    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
+    private static final String TWITTER_KEY = "CslbuHW20x84QxsKm7L06y0iC ";
+    private static final String TWITTER_SECRET = "4V0k9RoZ4YS3jdyd7BWWUwpnNp7926Z3TwEwsePYhxwhuLh1Zn";
+
 
     private CallbackManager callbackManager;
     private LoginButton loginButton;
@@ -144,6 +152,8 @@ public class MainActivity extends AppCompatActivity implements
 
         }
         super.onCreate(savedInstanceState);
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
+        Fabric.with(this, new Twitter(authConfig));
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();

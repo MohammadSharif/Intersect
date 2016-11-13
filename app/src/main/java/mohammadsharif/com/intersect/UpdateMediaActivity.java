@@ -20,7 +20,7 @@ import com.google.android.gms.tasks.Task;
 public class UpdateMediaActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TwitterLoginButton loginButton;
-
+    private User user;
 
     TwitterAuthClient mTwitterAuthClient= new TwitterAuthClient();
 
@@ -28,6 +28,9 @@ public class UpdateMediaActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_media);
+
+        Intent intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
 
         loginButton = (TwitterLoginButton) findViewById(R.id.twitter_login_button);
         loginButton.setCallback(new Callback<TwitterSession>() {
@@ -60,8 +63,24 @@ public class UpdateMediaActivity extends AppCompatActivity implements View.OnCli
             Intent intent = new Intent(UpdateMediaActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
-        }
+        } else if(v.getId() == R.id.twitter_button){
+                    Intent intent = new Intent(UpdateMediaActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    user.setTwitterConnected(true);
+                    finish();
+                } else if(v.getId() == R.id.linkedin_button){
+                    Intent intent = new Intent(UpdateMediaActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    user.setLinkedInConnected(true);
+                    finish();
+                } else if(v.getId() == R.id.instagram_button){
+                    Intent intent = new Intent(UpdateMediaActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    user.setInstagramConnected(true);
+        finish();
     }
+}
+
 
     @Override
     protected void onActivityResult(int requestCode, int responseCode, Intent intent) {

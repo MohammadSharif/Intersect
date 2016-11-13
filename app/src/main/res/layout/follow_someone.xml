@@ -59,13 +59,6 @@
         android:layout_alignParentLeft="true"
         android:onClick="onClick"/>
 
-    <com.twitter.sdk.android.core.identity.TwitterLoginButton
-        android:id="@+id/twitter_login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
-
-    /////////////////////////////////////////////////////////////////////////////////////////
     <Button
         android:id ="@+id/push_button"
         android:layout_width="80dp"
@@ -95,9 +88,8 @@
     <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="11dp"/>
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>

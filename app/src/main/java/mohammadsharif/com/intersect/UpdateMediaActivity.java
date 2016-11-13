@@ -10,12 +10,19 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.twitter.sdk.android.core.*;
 import com.twitter.sdk.android.core.identity.*;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class UpdateMediaActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -39,6 +46,20 @@ public class UpdateMediaActivity extends AppCompatActivity implements View.OnCli
                 // The TwitterSession is also available through:
                 // Twitter.getInstance().core.getSessionManager().getActiveSession()
                 TwitterSession session = result.data;
+
+                Long app = session.getUserId();
+                String app_str = app.toString();
+                String url_twitter = "http://twitter.com/" + app_str;
+
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String uid = user.getUid();
+
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("users/" + uid);
+
+                myRef.child("twitter").setValue(url_twitter);
+
+                
                 // TODO: Remove toast and use the TwitterSession's userID
                 // with your app's user model
                 String msg = "@" + session.getUserName() + " logged in! (#" + session.getUserId() + ")";

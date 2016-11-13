@@ -56,7 +56,6 @@ dependencies {
     compile('com.twitter.sdk.android:twitter:2.2.0@aar') {
         transitive = true;
     }
-    compile files('libs/rtsearch.lib.jar')
 }
 
 apply plugin: 'com.google.gms.google-services'

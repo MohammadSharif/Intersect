@@ -21,7 +21,6 @@ public class FirstFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.first_frag, container, false);
         TextView tv = (TextView) v.findViewById(R.id.tvFragFirst);
-        tv.setText("PLACE HOLDER");
 
         ImageButton facebook = new ImageButton(this.getActivity());
         ImageButton twitter = new ImageButton(this.getActivity());

@@ -35,6 +35,7 @@
         android:id="@+id/username"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="32sp"
+        android:textColor="@color/white"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"/>
 

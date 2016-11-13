@@ -23,59 +23,49 @@
         android:textStyle="bold"
         android:textColor="@color/com_facebook_share_button_text_color"/>
 
-    <ImageButton
+    <Button
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="55dp"
         android:id = "@+id/facebook_button"
-        android:src = "@drawable/facebooklogo"
-        android:background="@android:color/transparent"
-        android:scaleX="3"
-        android:scaleY="3"
+        android:background = "@drawable/facebooklogo"
+
         android:layout_width="100dp"
         android:layout_height = "100dp"
         android:onClick="onClick"/>
 
-    <ImageButton
+    <Button
 
         android:layout_marginRight="25dp"
         android:layout_marginTop="55dp"
         android:id = "@+id/linkedin_button"
-        android:src = "@drawable/linkedinlogo"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:background="@android:color/transparent"
-        android:scaleX="3"
-        android:scaleY="3"
+        android:background="@drawable/linkedinlogo"
         android:layout_height="100dp"
         android:layout_width="100dp"
         android:onClick="onClick"/>
 
 
-    <ImageButton
+    <Button
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginLeft="25dp"
         android:layout_marginTop = "100dp"
         android:id = "@+id/instagram_button"
-        android:src = "@drawable/instagramlogo"
-        android:background="@android:color/transparent"
-        android:scaleX="3"
-        android:scaleY="3"
+        android:background="@drawable/instagramlogo"
+
         android:layout_below="@+id/facebook_button"
         android:layout_alignParentLeft="true"
         android:onClick="onClick"/>
 
-    <ImageButton
+    <Button
         android:layout_width="100dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="25dp"
         android:layout_marginTop = "100dp"
         android:id = "@+id/twitter_button"
-        android:src = "@drawable/twitterlogo"
-        android:background="@android:color/transparent"
-        android:scaleX="3"
-        android:scaleY="3"
+        android:background= "@drawable/twitterlogo"
         android:layout_below="@+id/linkedin_button"
         android:layout_centerHorizontal="true"
         android:layout_height="100dp"

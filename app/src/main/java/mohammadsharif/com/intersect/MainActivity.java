@@ -34,7 +34,10 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.BottomBarFragment;
 import com.roughike.bottombar.OnTabSelectedListener;
@@ -48,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final int RC_SIGN_IN = 0;
     private BottomBar bottomBar;
 
+    private DatabaseReference mDatabase;
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -58,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(MainActivity.this, UpdateMediaActivity.class);
                 finish();
                 startActivity(intent);
+                writeUser(new User(mAuth.getCurrentUser().getUid(), mAuth.getCurrentUser().getDisplayName(), new ArrayList<Friend>()));
             } else {
                 // User not authenticated
                 System.out.println("User must be authenticated first");
@@ -69,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
                     "mohammadsharif.com.intersect",
@@ -146,5 +154,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             });
         }
+    }
+
+    private void writeUser(User user){
+        mDatabase.child("users").child(user.getUserID()).setValue(user);
     }
 }

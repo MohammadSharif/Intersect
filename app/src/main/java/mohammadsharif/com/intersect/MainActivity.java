@@ -196,11 +196,12 @@ public class MainActivity extends AppCompatActivity implements
         }
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
-        if (mLastLocation != null && mLatitudeText!=null && mLongitudeLabel!=null) {
+        if (mLastLocation != null) {
+            //Put functionality here
             //mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
-            //System.out.println(String.valueOf(mLastLocation.getLatitude()));
+            System.out.println(String.valueOf(mLastLocation.getLatitude()));
             //mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
-            //System.out.println(String.valueOf(mLastLocation.getLongitude()));
+            System.out.println(String.valueOf(mLastLocation.getLongitude()));
         }
     }
 
@@ -232,11 +233,12 @@ public class MainActivity extends AppCompatActivity implements
         }
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
-        if (mLastLocation != null && mLatitudeText!=null && mLongitudeLabel!=null) {
+        if (mLastLocation != null) {
+            //Put functionality here
             //mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
-            //System.out.println(String.valueOf(mLastLocation.getLatitude()));
+            System.out.println(String.valueOf(mLastLocation.getLatitude()));
             //mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
-            //System.out.println(String.valueOf(mLastLocation.getLongitude()));
+            System.out.println(String.valueOf(mLastLocation.getLongitude()));
         }
     }
 

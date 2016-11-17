@@ -11,8 +11,8 @@ The NEC API allows for image recognition via their servers and allows for images
 - Twitter's Login API
 - Facebook Authentication via Firebase
 
-## Contributers - 
-- Mohammad Sharif
+## Contributers -
+- Mohammad Sharif (www.mohammadsharif.com)
 - Jean-Luc Thumm
 - Nishant Mysore
 - Atsushi Yamamoto
